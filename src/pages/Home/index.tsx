@@ -1,13 +1,9 @@
-import React, { useState, FormEvent, useContext, useCallback } from 'react';
+import React, { useState, FormEvent, useContext } from 'react';
 import { FiChevronRight, FiPlus } from 'react-icons/fi';
-import { ThemeContext } from 'styled-components';
-import Switch from 'react-switch';
-import { shade } from 'polished';
+import ThemeContext from '../../context/themeContext';
 import Header from '../../components/Header';
 import { Container, Content, Title, Form, Repositories, Error } from './styles';
 import api from '../../services/api';
-import light from '../../styles/themes/light';
-import dark from '../../styles/themes/dark';
 
 interface Repository {
   full_name: string;
@@ -19,11 +15,10 @@ interface Repository {
 }
 
 const Home: React.FC = () => {
+  const { switchTheme } = useContext(ThemeContext);
   const [newRepository, setNewRepository] = useState('');
   const [inputError, setInputerror] = useState('');
   const [repositories, setRepositories] = useState<Repository[]>([]);
-  const [theme, setTheme] = useState(light);
-  const { title, colors } = useContext(ThemeContext);
 
   async function handleAddRepository(
     event: FormEvent<HTMLFormElement>,
@@ -51,6 +46,7 @@ const Home: React.FC = () => {
     <>
       <Container>
         <Content>
+          <Header toggleTheme={switchTheme} />
           <Title>Repositorios GitHub</Title>
           <Form hasError={!!inputError} onSubmit={handleAddRepository}>
             <input
