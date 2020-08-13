@@ -24,6 +24,10 @@ button{
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
 
 
 `;

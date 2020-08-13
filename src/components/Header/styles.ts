@@ -6,4 +6,9 @@ export const HeaderTop = styled.header`
   padding: 40px 20px;
   display: flex;
   justify-content: space-between;
+  position: relative;
+
+  svg {
+    font-size: 30px;
+  }
 `;
