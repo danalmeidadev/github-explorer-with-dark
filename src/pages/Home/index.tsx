@@ -63,7 +63,7 @@ const Home: React.FC = () => {
       <Container>
         <Content>
           <Header toggleTheme={switchTheme} />
-          <Title>Repositorios GitHub</Title>
+          <Title>Repositorio GitHub</Title>
           <Form hasError={!!inputError} onSubmit={handleAddRepository}>
             <input
               value={newRepository}
